@@ -12,7 +12,7 @@ use Illuminate\Validation\ValidationException;
 
 class AuthController extends Controller
 {
-    // Inscription
+
     public function register(Request $request)
     {
         $request->validate([
@@ -32,7 +32,7 @@ class AuthController extends Controller
         ], 201);
     }
 
-    // Connexion
+
     public function login(Request $request)
     {
         $request->validate([
@@ -54,16 +54,16 @@ class AuthController extends Controller
         ], 401);
     }
 
-    // Déconnexion
+
     public function logout(Request $request)
     {
-        // Supprimez uniquement le token d'accès actuel
+ 
         $request->user()->currentAccessToken()->delete();
     
         return response()->json(['message' => 'Déconnexion réussie'], 200);
     }
     
-    // Mot de passe oublié
+   
     public function sendResetLink(Request $request)
     {
         $request->validate(['email' => 'required|email']);
@@ -75,7 +75,7 @@ class AuthController extends Controller
                     : response()->json(['message' => 'Failed to send reset link'], 400);
     }
 
-    // Réinitialisation du mot de passe
+
     public function resetPassword(Request $request)
     {
         $request->validate([
