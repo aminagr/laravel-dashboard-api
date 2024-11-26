@@ -39,14 +39,14 @@ return [
 
         'smtp' => [
             'transport' => 'smtp',
-            'url' => env('MAIL_URL'),
-            'host' => env('MAIL_HOST', '127.0.0.1'),
-            'port' => env('MAIL_PORT', 2525),
+         //   'url' => env('MAIL_URL'),
+           'host' => env('MAIL_HOST', 'in-v3.mailjet.com'),
+           'port' => env('MAIL_PORT', 587),
             'encryption' => env('MAIL_ENCRYPTION', 'tls'),
             'username' => env('MAIL_USERNAME'),
             'password' => env('MAIL_PASSWORD'),
             'timeout' => null,
-            'local_domain' => env('MAIL_EHLO_DOMAIN', parse_url(env('APP_URL', 'http://localhost'), PHP_URL_HOST)),
+    
         ],
 
         'ses' => [
@@ -94,6 +94,15 @@ return [
                 'postmark',
             ],
         ],
+
+  'mailjet' => [
+        'transport' => 'smtp',
+        'host' => 'in-v3.mailjet.com',
+        'port' => 587,
+        'encryption' => 'tls',
+        'username' => env('MAILJET_API_KEY'),
+        'password' => env('MAILJET_API_SECRET'),
+    ],
 
     ],
 
